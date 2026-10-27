@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>SKB Craft — High-Performance Web, 3D &amp; Cybersecurity</title>
+  <meta name="description" content="SKB Craft es una agencia emergente de desarrollo web y ciberseguridad con base en Esquel, Chubut, Patagonia. Certificaciones mundiales en IA, programación y seguridad. Futuro en diseño 3D y videojuegos.">
+  <meta name="theme-color" content="#0a0b0e">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SKB Craft — Web, 3D &amp; Cybersecurity Labs">
+  <meta property="og:description" content="Desarrollo web de alto impacto, certificaciones mundiales y visión en diseño 3D y videojuegos. Modelo 50/50 Cero Riesgo.">
+  <meta property="og:image" content="./assets/images/gaming3d.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- Ambient Lighting Glow -->
+  <div class="ambient-glow"></div>
+
+  <!-- ==========================================================================
+       TOP NAVBAR
+       ========================================================================== -->
+  <header class="site-nav" id="siteNav">
+    <div class="container nav-row">
+      <a href="#hero" class="nav-brand">
+        <div class="nav-brand-logo-svg">SKB</div>
+        <span class="nav-brand-text">SKB Craft</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <ul class="nav-links-desktop">
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#modelo-5050">Modelo 50/50</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#cotizador">Cotizador</a></li>
+        <li><a href="#certificaciones">Certificaciones &amp; 3D</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <!-- Right Actions -->
+      <div class="nav-actions-right">
+        <button class="btn-pill btn-pill-dark" id="btnOpenDossierNav" style="padding: 0.45rem 0.9rem; font-size: 0.8rem;">
+          <span>Plan 2026</span>
+        </button>
+        <a href="#cotizador" class="btn-pill btn-pill-white" style="padding: 0.45rem 1rem; font-size: 0.8rem;">
+          <span>Maqueta Gratis</span>
+        </a>
+        <button class="nav-menu-btn" id="btnToggleTopDrawer" aria-label="Abrir navegación superior">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <span id="menuBtnText">Menú</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOP MOBILE SIDEBAR / SUPERIOR DRAWER (Desplegable superior para celular) -->
+  <div class="mobile-top-drawer" id="mobileTopDrawer">
+    <div class="mobile-top-drawer-nav">
+      <a href="#proyectos" class="mobile-top-drawer-link">
+        <span>Proyectos</span>
+        <span>&rarr;</span>
+      </a>
+      <a href="#modelo-5050" class="mobile-top-drawer-link">
+        <span>Modelo 50/50</span>
+        <span style="color: var(--accent-emerald);">Cero Riesgo</span>
+      </a>
+      <a href="#servicios" class="mobile-top-drawer-link">
+        <span>Servicios</span>
+        <span>&rarr;</span>
+      </a>
+      <a href="#cotizador" class="mobile-top-drawer-link">
+        <span>Cotizador</span>
+        <span style="color: var(--accent-cyan);">$ ARS</span>
+      </a>
+      <a href="#certificaciones" class="mobile-top-drawer-link">
+        <span>Certificaciones &amp; 3D</span>
+        <span>&rarr;</span>
+      </a>
+      <a href="#equipo" class="mobile-top-drawer-link">
+        <span>Equipo Técnico</span>
+        <span>&rarr;</span>
+      </a>
+      <a href="#faq" class="mobile-top-drawer-link">
+        <span>Preguntas Frecuentes</span>
+        <span>&rarr;</span>
+      </a>
+      <a href="javascript:void(0)" class="mobile-top-drawer-link" id="btnDrawerOpenDossier">
+        <span>Plan de Negocios</span>
+        <span>📄</span>
+      </a>
+    </div>
+
+    <div class="mobile-top-drawer-actions">
+      <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20solicitar%20mi%20maqueta%20inicial%20gratuita" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-white" style="width: 100%; justify-content: center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>WhatsApp: 2945-331018</span>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         HERO: JAKE SINCLAIR INSPiRED (AUTHOR BIO + NATURAL CARD STACK)
+         ========================================================================== -->
+    <section class="hero-jake" id="hero">
+      
+      <!-- Quick Categories Horizontal Bar for Mobile -->
+      <div class="mobile-quick-scroll-bar">
+        <a href="#proyectos" class="quick-pill-item">Proyectos</a>
+        <a href="#modelo-5050" class="quick-pill-item">Modelo 50/50</a>
+        <a href="#servicios" class="quick-pill-item">Servicios</a>
+        <a href="#cotizador" class="quick-pill-item">Cotizador</a>
+        <a href="#certificaciones" class="quick-pill-item">Certificaciones</a>
+        <a href="#equipo" class="quick-pill-item">Equipo</a>
+        <a href="#faq" class="quick-pill-item">FAQ</a>
+      </div>
+
+      <div class="container hero-grid">
+        
+        <!-- Left: Bio & Statement -->
+        <div class="hero-author-col">
+          <div class="author-header-group">
+            <div class="author-avatar-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+            </div>
+            <div>
+              <span class="pill-badge active-indicator">Patagonia Argentina • Activo</span>
+            </div>
+          </div>
+
+          <h1 class="hero-main-title">SKB Craft</h1>
+          <p class="hero-description">
+            Agencia de desarrollo web, software y <strong>ciberseguridad blindada</strong> con sede en Esquel, Chubut. Contamos con <strong>certificaciones mundiales en IA, programación y ciberseguridad</strong>, y un horizonte enfocado en el <strong>diseño 3D y videojuegos</strong>. Trabajamos con nuestro <strong>Modelo Cero Riesgo (50/50)</strong>.
+          </p>
+
+          <div class="hero-btn-group">
+            <a href="#cotizador" class="btn-pill btn-pill-white">
+              <span>Solicitar Maqueta 50/50</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20consultar%20por%20un%20proyecto%20web" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-dark">
+              <span>WhatsApp: 2945-331018</span>
+            </a>
+          </div>
+
+          <div class="hero-micro-meta">
+            <div class="micro-meta-item">
+              <span>Fundadores:</span>
+              <strong>Jeremías (Dir. High-End), Aron, Nico</strong>
+            </div>
+            <div class="micro-meta-item">
+              <span>Certificaciones:</span>
+              <strong style="color: var(--accent-cyan);">IA, Código &amp; Ciberseguridad</strong>
+            </div>
+            <div class="micro-meta-item">
+              <span>Futuro:</span>
+              <strong style="color: var(--accent-emerald);">Diseño 3D &amp; Videojuegos</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Natural, Smooth Card Stack (Zero Distortion & Touch Friendly) -->
+        <div class="hero-deck-col">
+          <div class="deck-showcase-stage" id="heroDeckStage">
+            
+            <!-- Card 1: E-Commerce -->
+            <div class="stack-card card-stack-1" id="stackCard0" onclick="switchHeroCard(0)">
+              <img src="./assets/images/ecommerce.jpg" alt="E-commerce y Apps" loading="eager">
+              <div class="stack-card-overlay">
+                <span class="stack-card-tag">E-Commerce &amp; Web Apps</span>
+                <h4 class="stack-card-title">Pasarelas de Pago Cifradas</h4>
+              </div>
+            </div>
+
+            <!-- Card 2: Cybersecurity -->
+            <div class="stack-card card-stack-2" id="stackCard1" onclick="switchHeroCard(1)">
+              <img src="./assets/images/security.jpg" alt="Ciberseguridad Blindada" loading="eager">
+              <div class="stack-card-overlay">
+                <span class="stack-card-tag">Ciberseguridad Mundial</span>
+                <h4 class="stack-card-title">Protección DDoS &amp; WAF</h4>
+              </div>
+            </div>
+
+            <!-- Card 3: 3D & Gaming Future -->
+            <div class="stack-card card-stack-3" id="stackCard2" onclick="switchHeroCard(2)">
+              <img src="./assets/images/gaming3d.jpg" alt="Diseño 3D y Videojuegos" loading="eager">
+              <div class="stack-card-overlay">
+                <span class="stack-card-tag">Visión Futura</span>
+                <h4 class="stack-card-title">Diseño 3D &amp; Videojuegos</h4>
+              </div>
+            </div>
+
+            <!-- Card 4: Patagonia Labs -->
+            <div class="stack-card card-stack-4" id="stackCard3" onclick="switchHeroCard(3)">
+              <img src="./assets/images/hero.jpg" alt="SKB Craft Labs" loading="eager">
+              <div class="stack-card-overlay">
+                <span class="stack-card-tag">Esquel, Patagonia</span>
+                <h4 class="stack-card-title">SKB Craft Innovation Labs</h4>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Interactive Dots for the Stack -->
+          <div class="stack-switcher-row">
+            <button class="stack-dot active" aria-label="Tarjeta 1" onclick="switchHeroCard(0)"></button>
+            <button class="stack-dot" aria-label="Tarjeta 2" onclick="switchHeroCard(1)"></button>
+            <button class="stack-dot" aria-label="Tarjeta 3" onclick="switchHeroCard(2)"></button>
+            <button class="stack-dot" aria-label="Tarjeta 4" onclick="switchHeroCard(3)"></button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INFINITE MARQUEE TICKER (CLEAN & FLUID)
+         ========================================================================== -->
+    <div class="ticker-marquee-wrap">
+      <div class="ticker-track">
+        <div class="ticker-item">Certificaciones Mundiales en IA <span class="star">✦</span></div>
+        <div class="ticker-item">Programación &amp; Software <span class="star">✦</span></div>
+        <div class="ticker-item">Ciberseguridad Blindada <span class="star">✦</span></div>
+        <div class="ticker-item">Futuro: Diseño 3D &amp; Videojuegos <span class="star">✦</span></div>
+        <div class="ticker-item">Next.js &amp; React <span class="star">✦</span></div>
+        <div class="ticker-item">Appwrite &amp; Cloudflare <span class="star">✦</span></div>
+        <div class="ticker-item">Modelo 50/50 Cero Riesgo <span class="star">✦</span></div>
+        <div class="ticker-item">WhatsApp: 2945-331018 <span class="star">✦</span></div>
+        <div class="ticker-item">Esquel Chubut Patagonia <span class="star">✦</span></div>
+        <!-- Duplicate for loop -->
+        <div class="ticker-item">Certificaciones Mundiales en IA <span class="star">✦</span></div>
+        <div class="ticker-item">Programación &amp; Software <span class="star">✦</span></div>
+        <div class="ticker-item">Ciberseguridad Blindada <span class="star">✦</span></div>
+        <div class="ticker-item">Futuro: Diseño 3D &amp; Videojuegos <span class="star">✦</span></div>
+        <div class="ticker-item">Next.js &amp; React <span class="star">✦</span></div>
+        <div class="ticker-item">Appwrite &amp; Cloudflare <span class="star">✦</span></div>
+        <div class="ticker-item">Modelo 50/50 Cero Riesgo <span class="star">✦</span></div>
+        <div class="ticker-item">WhatsApp: 2945-331018 <span class="star">✦</span></div>
+        <div class="ticker-item">Esquel Chubut Patagonia <span class="star">✦</span></div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         SHOWCASE CARDS: BOLD COLORED STACKS (FIXED STICKERS - ALWAYS UPRIGHT!)
+         ========================================================================== -->
+    <section class="showcases-wrapper" id="proyectos">
+      <div class="container" style="display: flex; flex-direction: column; gap: 3.5rem;">
+        
+        <!-- PROJECT 1: E-COMMERCE (THEME BLUE) -->
+        <div class="jake-project-card theme-blue" id="projectCard1">
+          <!-- Always Upright Sticker with Orbiting Ring -->
+          <div class="circular-sticker">
+            <span class="sticker-small-tag">Velocidad</span>
+            <span class="sticker-main-text">0.2s</span>
+            <span class="sticker-small-tag">Carga</span>
+          </div>
+
+          <div class="project-info-header">
+            <span class="project-tag-pill">E-Commerce &amp; Web Apps</span>
+            <h2 class="project-headline">Sistemas Transaccionales con Bases de Datos Dinámicas</h2>
+            <p class="project-summary">
+              Desarrollos escalables con carritos de compra, inventario en tiempo real, autenticación de usuarios y pasarelas de pago cifradas (MercadoPago, PayPal, Stripe) sin comisiones abusivas por venta.
+            </p>
+            <div class="project-features-pills">
+              <span class="feature-pill-item">Next.js &amp; React Frontend</span>
+              <span class="feature-pill-item">Appwrite Database</span>
+              <span class="feature-pill-item">Checkout Cifrado SSL</span>
+              <span class="feature-pill-item">Mobile-First 100%</span>
+            </div>
+          </div>
+
+          <div class="project-visual-stage">
+            <div class="project-interactive-deck" id="deckShowcase1">
+              <img src="./assets/images/ecommerce.jpg" alt="Showcase E-commerce y Dashboard" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: CIBERSEGURIDAD BLINDADA (THEME EMERALD) -->
+        <div class="jake-project-card theme-emerald" id="projectCard2">
+          <!-- Always Upright Sticker with Orbiting Ring -->
+          <div class="circular-sticker">
+            <span class="sticker-small-tag">Blindaje</span>
+            <span class="sticker-main-text">100%</span>
+            <span class="sticker-small-tag">Clean</span>
+          </div>
+
+          <div class="project-info-header">
+            <span class="project-tag-pill">Ciberseguridad Mundial</span>
+            <h2 class="project-headline">Código Limpio y Protección Anti-DDoS desde la Raíz</h2>
+            <p class="project-summary">
+              No utilizamos plantillas prefabricadas vulnerables de WordPress ni plugins hackeables. Blindamos cada endpoint con encriptación avanzada, distribución global en Cloudflare CDN y defensas contra inyecciones SQL.
+            </p>
+            <div class="project-features-pills">
+              <span class="feature-pill-item">Cloudflare WAF Activo</span>
+              <span class="feature-pill-item">Cero Brechas de WordPress</span>
+              <span class="feature-pill-item">Certificación en Seguridad</span>
+              <span class="feature-pill-item">Uptime 99.98% Monitoreado</span>
+            </div>
+          </div>
+
+          <div class="project-visual-stage">
+            <div class="project-interactive-deck" id="deckShowcase2">
+              <img src="./assets/images/security.jpg" alt="Showcase Ciberseguridad Blindada" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 3: FUTURO 3D & VIDEOJUEGOS (THEME PURPLE) -->
+        <div class="jake-project-card theme-purple" id="projectCard3">
+          <!-- Always Upright Sticker with Orbiting Ring -->
+          <div class="circular-sticker">
+            <span class="sticker-small-tag">Next-Gen</span>
+            <span class="sticker-main-text" style="font-size: 0.95rem;">3D/Games</span>
+            <span class="sticker-small-tag">Futuro</span>
+          </div>
+
+          <div class="project-info-header">
+            <span class="project-tag-pill">Visión de Vanguardia &amp; Motores Gráficos</span>
+            <h2 class="project-headline">Hacia el Diseño 3D Interactivo y el Desarrollo de Videojuegos</h2>
+            <p class="project-summary">
+              Nuestra visión técnica se expande más allá de la web convencional: proyectamos el desarrollo de experiencias inmersivas 3D (WebGL / Three.js), entornos virtuales interactivos y la futura creación de videojuegos propios utilizando motores gráficos de última generación.
+            </p>
+            <div class="project-features-pills">
+              <span class="feature-pill-item">Modelado &amp; Shaders 3D</span>
+              <span class="feature-pill-item">Desarrollo de Videojuegos</span>
+              <span class="feature-pill-item">Entornos WebGL Inmersivos</span>
+              <span class="feature-pill-item">IA Generativa en Tiempo Real</span>
+            </div>
+          </div>
+
+          <div class="project-visual-stage">
+            <div class="project-interactive-deck" id="deckShowcase3">
+              <img src="./assets/images/gaming3d.jpg" alt="Diseño 3D y Desarrollo de Videojuegos" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         MODELO CERO RIESGO 50/50: EDITORIAL STEPS
+         ========================================================================== -->
+    <section class="editorial-section" id="modelo-5050">
+      <div class="container">
+        
+        <div class="editorial-title-box">
+          <span class="pill-badge active-indicator" style="margin-bottom: 0.85rem;">Garantía Anti-Estafa</span>
+          <h2 style="font-size: clamp(1.85rem, 4vw, 3.2rem); margin-bottom: 0.85rem;">
+            Protocolo Cero Riesgo: <span class="text-cream">Modalidad 50/50</span>
+          </h2>
+          <p style="font-size: 1.05rem; max-width: 680px;">
+            Eliminamos por completo la fricción y el miedo a perder dinero con programadores informales. Diseñamos primero, cobramos después de validar.
+          </p>
+        </div>
+
+        <div class="editorial-number-grid">
+          
+          <div class="editorial-step-card">
+            <div class="editorial-big-num">01</div>
+            <h3>Maqueta Previa Gratis</h3>
+            <p>Diseñamos una landing page o prototipo visual funcional sin costo inicial. Podés interactuar y validar la propuesta con total tranquilidad.</p>
+            <div style="margin-top: auto; padding-top: 1rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald);">
+              ✓ Anticipo inicial: $0 ARS
+            </div>
+          </div>
+
+          <div class="editorial-step-card" style="border-color: rgba(255, 255, 255, 0.25);">
+            <div class="editorial-big-num">02</div>
+            <h3>50% al Iniciar el Código</h3>
+            <p>Solo si estás 100% conforme con la maqueta y la propuesta, se abona la primera mitad para iniciar el desarrollo del código final.</p>
+            <div style="margin-top: auto; padding-top: 1rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">
+              ✓ Plazos y deadlines estrictos
+            </div>
+          </div>
+
+          <div class="editorial-step-card">
+            <div class="editorial-big-num">03</div>
+            <h3>50% al Entregar en Producción</h3>
+            <p>El 50% restante se liquida únicamente cuando tu web está online en Cloudflare, auditada por nuestros beta testers y lista para vender.</p>
+            <div style="margin-top: auto; padding-top: 1rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cream);">
+              ✓ Soporte post-lanzamiento
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CATÁLOGO DE SERVICIOS
+         ========================================================================== -->
+    <section class="editorial-section" id="servicios" style="padding-top: 0;">
+      <div class="container">
+        
+        <div class="editorial-title-box">
+          <span class="pill-badge" style="margin-bottom: 0.85rem;">Catálogo &amp; Precios</span>
+          <h2 style="font-size: clamp(1.85rem, 4vw, 3.2rem); margin-bottom: 0.85rem;">
+            Soluciones para Todo Nivel de Escala
+          </h2>
+          <p style="font-size: 1.05rem; max-width: 680px;">
+            Precios de penetración transparentes desde $100.000 hasta $5.000.000 ARS.
+          </p>
+        </div>
+
+        <div class="editorial-number-grid">
+          
+          <div class="editorial-step-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 0.75rem;">
+              <span class="pill-badge">Lead Gen</span>
+              <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-cyan);">Desde $100k</span>
+            </div>
+            <h3>Landing Pages</h3>
+            <p>Página única (Single Page Application) focalizada 100% en la venta directa, leads, botones de WhatsApp y formularios de alta conversión.</p>
+            <a href="#cotizador" class="btn-pill btn-pill-dark" style="margin-top: 1.25rem; width: 100%;" onclick="selectServicePreset('landing')">Cotizar Landing</a>
+          </div>
+
+          <div class="editorial-step-card" style="border-color: rgba(255, 255, 255, 0.25);">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 0.75rem;">
+              <span class="pill-badge">PyMEs</span>
+              <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-emerald);">Desde $350k</span>
+            </div>
+            <h3>Webs Profesionales</h3>
+            <p>Sitios institucionales multipestaña (Inicio, Nosotros, Servicios, Portfolio, Contacto), panel autogestionable y mapas interactivos.</p>
+            <a href="#cotizador" class="btn-pill btn-pill-white" style="margin-top: 1.25rem; width: 100%;" onclick="selectServicePreset('profesional')">Cotizar Web Pro</a>
+          </div>
+
+          <div class="editorial-step-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 0.75rem;">
+              <span class="pill-badge">E-Commerce</span>
+              <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-purple);">Hasta $5M</span>
+            </div>
+            <h3>E-Commerce &amp; Apps</h3>
+            <p>Plataformas transaccionales con cuentas de clientes, carritos, pasarelas de pago cifradas y base de datos Appwrite/PostgreSQL.</p>
+            <a href="#cotizador" class="btn-pill btn-pill-dark" style="margin-top: 1.25rem; width: 100%;" onclick="selectServicePreset('ecommerce')">Cotizar Tienda</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SIMULADOR INTERACTIVO / COTIZADOR
+         ========================================================================== -->
+    <section class="editorial-section" id="cotizador">
+      <div class="container">
+        
+        <div class="editorial-title-box">
+          <span class="pill-badge active-indicator" style="margin-bottom: 0.85rem;">Simulador en Vivo</span>
+          <h2 style="font-size: clamp(1.85rem, 4vw, 3.2rem); margin-bottom: 0.85rem;">
+            Calculá tu Inversión con Esquema 50/50
+          </h2>
+          <p style="font-size: 1.05rem; max-width: 680px;">
+            Elegí las características de tu proyecto y calculá el desglose en tiempo real.
+          </p>
+        </div>
+
+        <div class="calculator-box-jake">
+          
+          <div>
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.85rem; color: #fff;">1. Seleccioná el Tipo de Proyecto</h4>
+            <div class="calc-selector-grid">
+              <button type="button" class="calc-btn-option selected" data-type="landing" data-base="150000" data-days="5">
+                <div class="calc-btn-title">Landing Page</div>
+                <div class="calc-btn-sub">Conversión y leads (~5 días)</div>
+              </button>
+              <button type="button" class="calc-btn-option" data-type="institucional" data-base="450000" data-days="12">
+                <div class="calc-btn-title">Web Institucional</div>
+                <div class="calc-btn-sub">Multipestaña marcas (~12 días)</div>
+              </button>
+              <button type="button" class="calc-btn-option" data-type="ecommerce" data-base="1200000" data-days="20">
+                <div class="calc-btn-title">E-Commerce Tienda</div>
+                <div class="calc-btn-sub">Venta online catálogo (~20 días)</div>
+              </button>
+              <button type="button" class="calc-btn-option" data-type="webapp" data-base="2800000" data-days="35">
+                <div class="calc-btn-title">Web App / Custom</div>
+                <div class="calc-btn-sub">Bases de datos dynamic (~35 días)</div>
+              </button>
+            </div>
+
+            <h4 style="font-size: 1.05rem; margin-bottom: 0.85rem; color: #fff;">2. Módulos &amp; Seguridad</h4>
+            <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+              <label style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer;">
+                <input type="checkbox" id="addonPayments" data-add="180000" style="accent-color: var(--accent-cyan); width: 18px; height: 18px;">
+                <div style="flex: 1;">
+                  <div style="font-size: 0.85rem; font-weight: 600; color: #fff;">Pasarela MercadoPago / Stripe / PayPal</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Integración y checkout cifrado (+ $180.000 ARS)</div>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer;">
+                <input type="checkbox" id="addonDb" data-add="220000" style="accent-color: var(--accent-cyan); width: 18px; height: 18px;">
+                <div style="flex: 1;">
+                  <div style="font-size: 0.85rem; font-weight: 600; color: #fff;">Base de Datos Appwrite / Postgres</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Manejo de usuarios, login y registros (+ $220.000 ARS)</div>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer;">
+                <input type="checkbox" id="addonSecurity" data-add="150000" style="accent-color: var(--accent-cyan); width: 18px; height: 18px;">
+                <div style="flex: 1;">
+                  <div style="font-size: 0.85rem; font-weight: 600; color: #fff;">Auditoría Pentesting &amp; WAF Blindado</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Protección anti-DDoS e inyecciones SQL (+ $150.000 ARS)</div>
+                </div>
+              </label>
+
+              <label style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer;">
+                <input type="checkbox" id="addonSaaS" data-add="45000" data-is-monthly="true" style="accent-color: var(--accent-cyan); width: 18px; height: 18px;">
+                <div style="flex: 1;">
+                  <div style="font-size: 0.85rem; font-weight: 600; color: #fff;">Mantenimiento y Hosting Cloudflare Mensual</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Backups diarios y soporte RustDesk (+ $45.000 ARS/mes)</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Summary Side -->
+          <div class="summary-card-jake">
+            <div>
+              <span class="pill-badge" style="margin-bottom: 1rem;">Presupuesto Estimado</span>
+              <div class="summary-big-total" id="calcTotalVal">$150.000 ARS</div>
+              <div style="font-size: 0.82rem; color: var(--accent-emerald); font-family: var(--font-mono); margin-bottom: 1.25rem;" id="calcDeliveryDays">
+                Plazo estimado: ~5 días hábiles
+              </div>
+
+              <div style="background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.25rem;">
+                <div class="split-pill-row">
+                  <span style="color: var(--text-muted);">Maqueta inicial:</span>
+                  <span style="color: var(--accent-emerald); font-weight: 700; font-family: var(--font-mono);">$0 ARS (GRATIS)</span>
+                </div>
+                <div class="split-pill-row">
+                  <span style="color: var(--text-muted);">1° Pago (50% al iniciar código):</span>
+                  <span style="color: #fff; font-weight: 700; font-family: var(--font-mono);" id="calcHalfFirst">$75.000 ARS</span>
+                </div>
+                <div class="split-pill-row">
+                  <span style="color: var(--text-muted);">2° Pago (50% en producción):</span>
+                  <span style="color: #fff; font-weight: 700; font-family: var(--font-mono);" id="calcHalfSecond">$75.000 ARS</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <button class="btn-pill btn-pill-white" style="width: 100%; justify-content: center;" id="btnSendQuoteWhatsapp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>Solicitar por WhatsApp (2945-331018)</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CERTIFICACIONES MUNDIALES & VISIÓN 3D / VIDEOJUEGOS
+         ========================================================================== -->
+    <section class="editorial-section" id="certificaciones" style="padding-top: 0;">
+      <div class="container">
+        
+        <div class="editorial-title-box">
+          <span class="pill-badge active-indicator" style="margin-bottom: 0.85rem;">Excelencia Verificada</span>
+          <h2 style="font-size: clamp(1.85rem, 4vw, 3.2rem); margin-bottom: 0.85rem;">
+            Certificaciones Mundiales &amp; Visión de Futuro
+          </h2>
+          <p style="font-size: 1.05rem; max-width: 680px;">
+            Contamos con certificaciones internacionales en tres pilares fundamentales, con un horizonte claro hacia el diseño 3D interactivo y la creación de videojuegos.
+          </p>
+        </div>
+
+        <!-- 3 Pillars Grid -->
+        <div class="editorial-number-grid" style="margin-bottom: 2.5rem;">
+          
+          <div class="editorial-step-card">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(0, 240, 255, 0.1); border: 1px solid var(--accent-cyan); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--accent-cyan);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"></path></svg>
+            </div>
+            <h3 style="color: var(--accent-cyan);">Certificación Mundial en IA</h3>
+            <p>Especialización en modelos avanzados de Inteligencia Artificial (Claude Pro, Deep Learning y automatización de procesos de software), acelerando la depuración y optimización de código a estándares globales.</p>
+          </div>
+
+          <div class="editorial-step-card" style="border-color: rgba(255, 255, 255, 0.25);">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-emerald); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--accent-emerald);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <h3 style="color: var(--accent-emerald);">Certificación en Programación</h3>
+            <p>Validación profesional en frameworks reactivos modernos (React, Next.js, Python), arquitectura limpia y bases de datos dinámicas con Appwrite para aplicaciones con miles de usuarios concurrentes.</p>
+          </div>
+
+          <div class="editorial-step-card">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(168, 85, 247, 0.1); border: 1px solid var(--accent-purple); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; color: var(--accent-purple);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 style="color: var(--accent-purple);">Certificación en Ciberseguridad</h3>
+            <p>Prácticas de seguridad defensiva, auditoría de penetración (pentesting), mitigación de ataques distribuidos DDoS, seguridad de bases de datos y encriptación de extremo a extremo.</p>
+          </div>
+
+        </div>
+
+        <!-- Future Roadmap: 3D & Video Games -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-lg); padding: clamp(1.5rem, 3.5vw, 3rem); position: relative; overflow: hidden;">
+          <div style="max-width: 720px; position: relative; z-index: 2;">
+            <span class="pill-badge" style="margin-bottom: 0.85rem; color: var(--accent-purple); border-color: rgba(168, 85, 247, 0.3);">Roadmap &amp; Futuro</span>
+            <h3 style="font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 0.85rem; color: #fff;">
+              El Próximo Salto: Diseño 3D &amp; Desarrollo de Videojuegos
+            </h3>
+            <p style="font-size: 0.98rem; line-height: 1.6; margin-bottom: 1.5rem;">
+              En SKB Craft no nos conformamos con la web estática. Nuestro plan estratégico proyecta la incorporación de modelado 3D interactivo en tiempo real para sitios web inmersivos, y la evolución hacia un <strong>estudio de desarrollo de videojuegos</strong> con narrativas y mecánicas de alta calidad.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.65rem;">
+              <span class="pill-badge">Modelado 3D WebGL</span>
+              <span class="pill-badge">Three.js Interactivo</span>
+              <span class="pill-badge">Desarrollo de Videojuegos</span>
+              <span class="pill-badge">Shaders &amp; Simulación</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EQUIPO FUNDADOR: EDITORIAL CARDS
+         ========================================================================== -->
+    <section class="editorial-section" id="equipo">
+      <div class="container">
+        
+        <div class="editorial-title-box">
+          <span class="pill-badge active-indicator" style="margin-bottom: 0.85rem;">Directores Técnicos</span>
+          <h2 style="font-size: clamp(1.85rem, 4vw, 3.2rem); margin-bottom: 0.85rem;">
+            El Equipo Detrás de SKB Craft
+          </h2>
+          <p style="font-size: 1.05rem; max-width: 680px;">
+            Estructura horizontal de tres perfiles especializados con base en Esquel, Chubut.
+          </p>
+        </div>
+
+        <div class="team-editorial-grid">
+          
+          <!-- Jeremías Salonio (DIRECTOR HIGH-END) -->
+          <div class="founder-editorial-card" style="border-color: rgba(0, 240, 255, 0.35);">
+            <div class="founder-avatar-wrap" style="border-color: var(--accent-cyan);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="founder-name">Jeremías Uriel Salonio Romanchuk</h3>
+            <div class="founder-role" style="color: var(--accent-cyan);">Director High-End &amp; Backend, Infraestructura y Seguridad</div>
+            <p class="founder-bio">
+              Lidera la división de proyectos High-End, arquitectura backend de alta complejidad, ciberseguridad avanzada y despliegue global en Cloudflare CDN. Certificaciones internacionales en programación, IA y ciberseguridad.
+            </p>
+          </div>
+
+          <!-- Aron Cornelio -->
+          <div class="founder-editorial-card">
+            <div class="founder-avatar-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <h3 class="founder-name">Aron Alexander Cornelio Gutiérrez</h3>
+            <div class="founder-role">Director de Relaciones Comerciales &amp; QA</div>
+            <p class="founder-bio">
+              Primer punto de contacto, presupuestos y traducción técnica de las necesidades del cliente. Lidera el equipo de Beta Testers (QA) con pruebas de estrés y usabilidad previo a cada entrega en producción.
+            </p>
+          </div>
+
+          <!-- Nicolas Echaury -->
+          <div class="founder-editorial-card">
+            <div class="founder-avatar-wrap">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <h3 class="founder-name">Nicolas Ezequiel Echaury Troncoso</h3>
+            <div class="founder-role">Director de Frontend y UI/UX</div>
+            <p class="founder-bio">
+              Especialista en React, Tailwind CSS y arquitectura visual mobile-first. Planifica la interacción del usuario y gestiona la conexión de APIs visuales y bases de datos con Appwrite.
+            </p>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); display: flex; flex-direction: column; gap: 0.4rem;">
+          <div style="font-family: var(--font-display); font-size: 1.05rem; color: #fff; font-weight: 700;">
+            Escuela N° 713 "Juan Abdala Chayep" — Esquel, Provincia de Chubut, Argentina
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">
+            Trabajo Práctico: Plan de Negocios Oficial presentado el 19/10/2026. Evaluación: 26/10/2026.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FAQ & PLAN DE CONTINGENCIA
+         ========================================================================== -->
+    <section class="editorial-section" id="faq" style="padding-top: 0;">
+      <div class="container">
+        
+        <div class="editorial-title-box">
+          <span class="pill-badge" style="margin-bottom: 0.85rem;">Garantías &amp; Seguridad</span>
+          <h2 style="font-size: clamp(1.85rem, 4vw, 3.2rem); margin-bottom: 0.85rem;">
+            Preguntas Frecuentes &amp; Plan de Contingencia
+          </h2>
+          <p style="font-size: 1.05rem; max-width: 680px;">
+            Respuestas claras sobre respaldo en la nube, contingencia y soporte.
+          </p>
+        </div>
+
+        <div style="max-width: 880px; display: flex; flex-direction: column; gap: 0.85rem;">
+          
+          <div class="editorial-step-card" style="padding: 1.25rem 1.5rem;">
+            <h4 style="font-size: 1.08rem; color: #fff; margin-bottom: 0.4rem;">¿Qué ocurre si hay un corte de energía o fallo en Esquel? (Plan de Contingencia)</h4>
+            <p>Todo el código fuente se versiona en tiempo real y se respalda en repositorios en la nube (GitHub/GitLab). Cualquier otro desarrollador puede retomar la terminal de inmediato. Además, la web de los clientes corre en la CDN global de Cloudflare, por lo que nunca depende de hardware local de nuestra ciudad.</p>
+          </div>
+
+          <div class="editorial-step-card" style="padding: 1.25rem 1.5rem;">
+            <h4 style="font-size: 1.08rem; color: #fff; margin-bottom: 0.4rem;">¿Por qué una maqueta previa gratis bajo el esquema 50/50?</h4>
+            <p>Porque destruye la desconfianza del cliente que ha sufrido malas experiencias con freelancers informales. Validamos primero el diseño y la funcionalidad; si te encanta, avanzamos con el 50%, y el 50% restante solo al entregar en producción.</p>
+          </div>
+
+          <div class="editorial-step-card" style="padding: 1.25rem 1.5rem;">
+            <h4 style="font-size: 1.08rem; color: #fff; margin-bottom: 0.4rem;">¿Cómo se brinda asistencia técnica remota post-entrega?</h4>
+            <p>Brindamos atención directa por WhatsApp (<strong>2945-331018</strong>) y videollamadas en Google Meet. Para configuraciones avanzadas o soporte en el equipo del cliente, utilizamos conexiones encriptadas punto a punto con RustDesk.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer-jake">
+    <div class="container">
+      <div class="footer-top-row">
+        <div>
+          <span class="pill-badge active-indicator" style="margin-bottom: 1.25rem;">Cupos Limitados: 3 Proyectos / Mes</span>
+          <h2 class="footer-big-contact-title">¿Digitalizamos tu negocio?</h2>
+          <p style="font-size: 1.05rem; max-width: 500px; margin-bottom: 1.25rem;">
+            Escribinos hoy y te preparamos una maqueta funcional de prueba sin ningún tipo de costo inicial ni compromiso.
+          </p>
+          
+          <div style="font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 1.75rem;">
+            <span>WhatsApp / Tel: </span>
+            <a href="https://wa.me/5492945331018" target="_blank" rel="noopener noreferrer" style="color: var(--accent-emerald); font-weight: 700; text-decoration: underline;">
+              +54 9 2945 33-1018
+            </a>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+            <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20solicitar%20la%20maqueta%20inicial%20de%20prueba" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-white">
+              <span>Contactar al 2945331018</span>
+            </a>
+            <button class="btn-pill btn-pill-dark" id="btnFooterDossier">
+              <span>Leer Plan de Negocios Oficial</span>
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem;">
+          <div style="color: #fff; font-weight: 700;">Navegación</div>
+          <a href="#proyectos" style="color: var(--text-muted);">Proyectos &amp; Showcases</a>
+          <a href="#modelo-5050" style="color: var(--text-muted);">Modelo 50/50 Anti-Estafa</a>
+          <a href="#servicios" style="color: var(--text-muted);">Servicios &amp; Precios</a>
+          <a href="#cotizador" style="color: var(--text-muted);">Simulador Interactivo</a>
+          <a href="#certificaciones" style="color: var(--text-muted);">Certificaciones &amp; 3D</a>
+          <a href="#equipo" style="color: var(--text-muted);">Equipo Técnico</a>
+        </div>
+      </div>
+
+      <div style="padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; font-size: 0.78rem; color: var(--text-muted);">
+        <div>&copy; 2026 SKB Craft. Esquel, Chubut, Patagonia Argentina.</div>
+        <div>Escuela N° 713 "Juan Abdala Chayep" — Evaluación 26/10/2026.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Sticky Bottom Dock -->
+  <div class="mobile-sticky-dock">
+    <div>
+      <div style="font-family: var(--font-display); font-weight: 800; font-size: 0.9rem; color: #fff;">SKB Craft</div>
+      <div style="font-size: 0.68rem; color: var(--accent-emerald); font-family: var(--font-mono);">WhatsApp: 2945-331018</div>
+    </div>
+    <div style="display: flex; gap: 0.5rem;">
+      <a href="#cotizador" class="btn-pill btn-pill-dark" style="padding: 0.4rem 0.75rem; font-size: 0.78rem;">Cotizar</a>
+      <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20solicitar%20la%20maqueta%20inicial%20de%20prueba" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-white" style="padding: 0.4rem 0.85rem; font-size: 0.78rem;">WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       DOSSIER PLAN DE NEGOCIOS MODAL (FULL DOCUMENT VIEWER)
+       ========================================================================== -->
+  <div class="dossier-modal" id="dossierModal" role="dialog" aria-modal="true" aria-labelledby="dossierTitle">
+    <div class="dossier-backdrop" id="dossierBackdrop"></div>
+    <div class="dossier-dialog">
+      <div class="dossier-dialog-header">
+        <div>
+          <span class="pill-badge" style="font-size: 0.7rem; margin-bottom: 0.25rem;">Documento Académico Oficial</span>
+          <h3 id="dossierTitle" style="font-size: 1.15rem; color: #fff;">Plan de Negocios: SKB Craft</h3>
+        </div>
+        <button class="btn-pill btn-pill-dark" id="btnCloseDossier" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">
+          <span>Cerrar</span>
+        </button>
+      </div>
+
+      <div class="dossier-dialog-body">
+        <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.5rem;">
+          <p><strong>Institución:</strong> Escuela N° 713 "Juan Abdala Chayep" - Esquel, Chubut, Argentina</p>
+          <p><strong>Integrantes:</strong> Jeremías Uriel Salonio Romanchuk (Director High-End), Aron Alexander Cornelio Gutiérrez, Nicolas Ezequiel Echaury Troncoso</p>
+          <p><strong>Fecha de Presentación:</strong> 19/10/2026 | <strong>Fecha de Evaluación Grupal:</strong> 26/10/2026</p>
+          <p><strong>Contacto Directo:</strong> +54 9 2945 33-1018</p>
+        </div>
+
+        <h2>1. Resumen Ejecutivo</h2>
+        <p>SKB Craft es una agencia emergente de desarrollo web, programación y ciberseguridad con sede en Esquel, provincia de Chubut. Nos dedicamos a la creación de soluciones digitales de alto rendimiento: desde landing pages informativas hasta complejas plataformas con integración de medios de pago y bases de datos dinámicas.</p>
+        <p><strong>Misión:</strong> Proveer a emprendedores, PyMEs e instituciones herramientas digitales seguras, rápidas y escalables mediante un sistema de trabajo transparente, sin retrasos y libre de riesgos financieros.</p>
+        <p><strong>Visión:</strong> Convertirnos en la agencia líder en la Patagonia Argentina y proyectarnos internacionalmente hacia experiencias inmersivas en <strong>diseño 3D y desarrollo de videojuegos</strong>, respaldados por certificaciones mundiales en IA, programación y ciberseguridad.</p>
+        <p><strong>Estrategia 50/50:</strong> Diseñamos una maqueta funcional inicial sin costo. Solo si el cliente está 100% satisfecho con el prototipo, abona el 50% para iniciar el desarrollo del código final y el 50% restante al momento de la entrega en producción.</p>
+
+        <h2>2. Descripción de la Empresa</h2>
+        <p>SKB Craft surge de la unión de tres estudiantes y programadores: Jeremías, Aron y Nico. Detectamos la problemática de negocios estafados por freelancers informales o que recibían webs lentas y hackeables. Operamos con modelo 100% digital y remoto desde Esquel, Chubut, reduciendo a cero costos de oficinas físicas tradicionales y llegando a todo el país y el mundo.</p>
+
+        <h2>3. Línea de Productos y Servicios</h2>
+        <ul>
+          <li><strong>Landing Pages:</strong> Diseñadas exclusivamente para la conversión de campañas y captación de leads con botones de llamada a la acción y contacto directo.</li>
+          <li><strong>Páginas Web Profesionales:</strong> Multipágina institucional, panel autogestionable básico, mapas interactivos y formulario dinámico.</li>
+          <li><strong>Sistemas E-commerce y Web Apps:</strong> Bases de datos de usuarios (registro y login), carritos de compra, pasarelas cifradas (MercadoPago, PayPal, Stripe) y paneles de control a medida.</li>
+          <li><strong>División Futura 3D &amp; Gaming:</strong> Creación de entornos web interactivos con Three.js / WebGL y desarrollo de videojuegos con motores gráficos de última generación.</li>
+        </ul>
+
+        <h2>4. Análisis de Mercado &amp; FODA</h2>
+        <p>En Argentina, la facturación del comercio electrónico crece a tres dígitos anualmente según la CACE. Nuestro rango de facturación por proyecto (de $100.000 a $5.000.000 ARS) nos otorga una flexibilidad inigualable frente a plataformas lentas (Wix/Shopify) o agencias tradicionales con presupuestos inalcanzables.</p>
+        <p><strong>Fortalezas:</strong> Certificaciones mundiales en IA, programación y ciberseguridad; equipo multidisciplinario altamente calificado; modelo 50/50 anti-estafa; estructura de costos fijos ultrabaja.</p>
+
+        <h2>5. Organización y Estructura</h2>
+        <ul>
+          <li><strong>Jeremías Uriel Salonio Romanchuk:</strong> Director High-End &amp; Backend, Infraestructura y Seguridad. Auditorías de código y ciberseguridad avanzada.</li>
+          <li><strong>Aron Alexander Cornelio Gutiérrez:</strong> Director de Relaciones Comerciales, prospección y QA / Beta Tester.</li>
+          <li><strong>Nicolas Ezequiel Echaury Troncoso:</strong> Director de Frontend y UI/UX, arquitectura React/Tailwind y Beta Tester.</li>
+        </ul>
+
+        <h2>6. Estrategia de Marketing &amp; Precios</h2>
+        <p>Combinación de Outbound Marketing (auditorías gratuitas a comercios con webs obsoletas o que solo venden por Instagram) e Inbound Marketing (casos de estudio y contenido técnico en redes). Precios de penetración accesibles con modalidad de suscripciones mensuales (Retainers) para mantenimiento continuo.</p>
+
+        <h2>7. Proyecciones Financieras &amp; Crecimiento</h2>
+        <p>Facturación proyectada de 3 proyectos mensuales ($4.500.000 ARS brutos promedio) complementada progresivamente con cuotas de suscripción por mantenimiento y seguridad web (Retainers). Con márgenes operativos superiores al 90%, el flujo de caja se reinvierte en investigación para el desarrollo 3D y gaming.</p>
+
+        <h2>8. Plan de Contingencia</h2>
+        <ul>
+          <li><strong>Tecnológico:</strong> Versionado continuo en la nube (GitHub), PaaS y Cloudflare. Cero dependencia de cortes locales. Asistencia remota cifrada con RustDesk.</li>
+          <li><strong>Económico:</strong> Modelo SaaS de Alquiler Web ($30.000/mes) ante recesiones y diversificación a servicios de rápida rotación.</li>
+          <li><strong>Operativo:</strong> Independencia de proveedores ("Zero Vendor Lock-in") con capacidad de migración en menos de 24 horas entre Cloudflare, Appwrite, AWS y Supabase.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="./app.js"></script>
+</body>
+</html>
