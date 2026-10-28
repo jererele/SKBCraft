@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>SKB Craft — High-Performance Web, 3D &amp; Cybersecurity</title>
   <meta name="description" content="SKB Craft es una agencia emergente de desarrollo web y ciberseguridad con base en Esquel, Chubut, Patagonia. Certificaciones mundiales en IA, programación y seguridad. Futuro en diseño 3D y videojuegos.">
-  <meta name="theme-color" content="#0a0b0e">
+  <meta name="theme-color" content="#08090b">
 
   <!-- Open Graph -->
   <meta property="og:title" content="SKB Craft — Web, 3D &amp; Cybersecurity Labs">
@@ -16,10 +16,14 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="./styles.css">
+
+  <!-- React 18 & ReactDOM via CDN -->
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
 
   <!-- GSAP & ScrollTrigger CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -27,11 +31,11 @@
 </head>
 <body>
 
-  <!-- Top Scroll Progress Bar -->
-  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  <!-- Subtle Film Grain Overlay (Boutique Studio Look) -->
+  <div class="film-grain-overlay"></div>
 
-  <!-- Ambient Lighting Glow -->
-  <div class="ambient-glow"></div>
+  <!-- Top Scroll Progress Line -->
+  <div class="scroll-progress-line" id="scrollProgressLine"></div>
 
   <!-- ==========================================================================
        TOP NAVBAR
@@ -46,23 +50,30 @@
       <!-- Desktop Nav -->
       <ul class="nav-links-desktop">
         <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#terminal">Terminal</a></li>
         <li><a href="#modelo-5050">Modelo 50/50</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#cotizador">Cotizador</a></li>
-        <li><a href="#certificaciones">Certificaciones &amp; 3D</a></li>
+        <li><a href="#certificaciones">Certificaciones</a></li>
         <li><a href="#equipo">Equipo</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#chat-sim">Chat en Vivo</a></li>
       </ul>
 
       <!-- Right Actions -->
       <div class="nav-actions-right">
-        <button class="btn-pill btn-pill-dark" id="btnOpenDossierNav" style="padding: 0.45rem 0.9rem; font-size: 0.8rem;">
+        <!-- Audio Haptics Toggle -->
+        <button class="sound-toggle-btn" id="soundToggleBtn" aria-label="Activar o desactivar sonido táctil" title="Sonido Háptico UI">
+          <span id="soundIcon">🔊</span>
+          <span id="soundLabel">Haptic</span>
+        </button>
+
+        <button class="btn-pill btn-pill-dark" id="btnOpenDossierNav" style="padding: 0.45rem 0.85rem; font-size: 0.78rem;">
           <span>Plan 2026</span>
         </button>
-        <a href="#cotizador" class="btn-pill btn-pill-white" style="padding: 0.45rem 1rem; font-size: 0.8rem;">
+        <a href="#cotizador" class="btn-pill btn-pill-white" style="padding: 0.45rem 0.95rem; font-size: 0.78rem;">
           <span>Maqueta Gratis</span>
         </a>
-        <button class="nav-menu-btn" id="btnToggleTopDrawer" aria-label="Abrir navegación superior">
+        <button class="nav-menu-btn" id="btnToggleTopDrawer" aria-label="Abrir menú superior">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
           <span id="menuBtnText">Menú</span>
         </button>
@@ -70,12 +81,16 @@
     </div>
   </header>
 
-  <!-- TOP MOBILE SIDEBAR / SUPERIOR DRAWER (Desplegable superior para celular) -->
+  <!-- TOP MOBILE SIDEBAR / SUPERIOR DRAWER -->
   <div class="mobile-top-drawer" id="mobileTopDrawer">
     <div class="mobile-top-drawer-nav">
       <a href="#proyectos" class="mobile-top-drawer-link">
         <span>Proyectos</span>
         <span>&rarr;</span>
+      </a>
+      <a href="#terminal" class="mobile-top-drawer-link">
+        <span>Terminal Edge</span>
+        <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.75rem;">$ ping</span>
       </a>
       <a href="#modelo-5050" class="mobile-top-drawer-link">
         <span>Modelo 50/50</span>
@@ -87,54 +102,53 @@
       </a>
       <a href="#cotizador" class="mobile-top-drawer-link">
         <span>Cotizador</span>
-        <span style="color: var(--accent-cyan);">$ ARS</span>
+        <span style="color: var(--accent-cream);">$ ARS</span>
       </a>
       <a href="#certificaciones" class="mobile-top-drawer-link">
         <span>Certificaciones &amp; 3D</span>
         <span>&rarr;</span>
       </a>
-      <a href="#equipo" class="mobile-top-drawer-link">
-        <span>Equipo Técnico</span>
-        <span>&rarr;</span>
-      </a>
-      <a href="#faq" class="mobile-top-drawer-link">
-        <span>Preguntas Frecuentes</span>
-        <span>&rarr;</span>
+      <a href="#chat-sim" class="mobile-top-drawer-link">
+        <span>Chat Simulator</span>
+        <span style="color: #25D366;">WhatsApp</span>
       </a>
       <a href="javascript:void(0)" class="mobile-top-drawer-link" id="btnDrawerOpenDossier">
-        <span>Plan de Negocios</span>
+        <span>Dossier Oficial</span>
         <span>📄</span>
       </a>
     </div>
 
-    <div class="mobile-top-drawer-actions">
+    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
       <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20solicitar%20mi%20maqueta%20inicial%20gratuita" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-white" style="width: 100%; justify-content: center;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-        <span>WhatsApp: 2945-331018</span>
+        <span>WhatsApp Directo (2945-331018)</span>
       </a>
     </div>
   </div>
 
   <main>
     <!-- ==========================================================================
-         HERO: JAKE SINCLAIR INSPiRED (AUTHOR BIO + NATURAL CARD STACK)
+         HERO SECTION
          ========================================================================== -->
     <section class="hero-jake" id="hero">
       
-      <!-- Quick Categories Horizontal Bar for Mobile -->
+      <!-- Interactive Cyber Canvas (Dynamic Particles & Touch Waves) -->
+      <canvas id="heroInteractiveCanvas" class="hero-interactive-canvas"></canvas>
+
+      <!-- Mobile Quick Horizontal Scrollbar -->
       <div class="mobile-quick-scroll-bar">
         <a href="#proyectos" class="quick-pill-item">Proyectos</a>
+        <a href="#terminal" class="quick-pill-item">Terminal</a>
         <a href="#modelo-5050" class="quick-pill-item">Modelo 50/50</a>
         <a href="#servicios" class="quick-pill-item">Servicios</a>
         <a href="#cotizador" class="quick-pill-item">Cotizador</a>
         <a href="#certificaciones" class="quick-pill-item">Certificaciones</a>
-        <a href="#equipo" class="quick-pill-item">Equipo</a>
-        <a href="#faq" class="quick-pill-item">FAQ</a>
+        <a href="#chat-sim" class="quick-pill-item">Chat en Vivo</a>
       </div>
 
       <div class="container hero-grid">
         
-        <!-- Left: Bio & Statement -->
+        <!-- Left: Statement -->
         <div class="hero-author-col">
           <div class="author-header-group">
             <div class="author-avatar-circle">
@@ -147,7 +161,7 @@
 
           <h1 class="hero-main-title">SKB Craft</h1>
           <p class="hero-description">
-            Agencia de desarrollo web, software y <strong>ciberseguridad blindada</strong> con sede en Esquel, Chubut. Contamos con <strong>certificaciones mundiales en IA, programación y ciberseguridad</strong>, y un horizonte enfocado en el <strong>diseño 3D y videojuegos</strong>. Trabajamos con nuestro <strong>Modelo Cero Riesgo (50/50)</strong>.
+            Laboratorio de desarrollo web, software de alto rendimiento y <strong>ciberseguridad blindada</strong> fundado en Esquel, Chubut por <strong>Jeremías (Dir. High-End), Aron y Nico</strong>. Tres desarrolladores con <strong>certificaciones mundiales en IA, código y ciberseguridad</strong>, orientados a la futura creación de <strong>diseño 3D y videojuegos</strong>. Trabajamos con nuestro <strong>Modelo Cero Riesgo (50/50)</strong>.
           </p>
 
           <div class="hero-btn-group">
@@ -170,17 +184,16 @@
               <strong style="color: var(--accent-cyan);">IA, Código &amp; Ciberseguridad</strong>
             </div>
             <div class="micro-meta-item">
-              <span>Futuro:</span>
+              <span>Horizonte:</span>
               <strong style="color: var(--accent-emerald);">Diseño 3D &amp; Videojuegos</strong>
             </div>
           </div>
         </div>
 
-        <!-- Right: Natural, Smooth Card Stack (Zero Distortion & Touch Friendly) -->
+        <!-- Right: Touch Friendly Card Stack -->
         <div class="hero-deck-col">
           <div class="deck-showcase-stage" id="heroDeckStage">
             
-            <!-- Card 1: E-Commerce -->
             <div class="stack-card card-stack-1" id="stackCard0" onclick="switchHeroCard(0)">
               <img src="./assets/images/ecommerce.jpg" alt="E-commerce y Apps" loading="eager">
               <div class="stack-card-overlay">
@@ -189,7 +202,6 @@
               </div>
             </div>
 
-            <!-- Card 2: Cybersecurity -->
             <div class="stack-card card-stack-2" id="stackCard1" onclick="switchHeroCard(1)">
               <img src="./assets/images/security.jpg" alt="Ciberseguridad Blindada" loading="eager">
               <div class="stack-card-overlay">
@@ -198,7 +210,6 @@
               </div>
             </div>
 
-            <!-- Card 3: 3D & Gaming Future -->
             <div class="stack-card card-stack-3" id="stackCard2" onclick="switchHeroCard(2)">
               <img src="./assets/images/gaming3d.jpg" alt="Diseño 3D y Videojuegos" loading="eager">
               <div class="stack-card-overlay">
@@ -207,7 +218,6 @@
               </div>
             </div>
 
-            <!-- Card 4: Patagonia Labs -->
             <div class="stack-card card-stack-4" id="stackCard3" onclick="switchHeroCard(3)">
               <img src="./assets/images/hero.jpg" alt="SKB Craft Labs" loading="eager">
               <div class="stack-card-overlay">
@@ -218,7 +228,6 @@
 
           </div>
 
-          <!-- Interactive Dots for the Stack -->
           <div class="stack-switcher-row">
             <button class="stack-dot active" aria-label="Tarjeta 1" onclick="switchHeroCard(0)"></button>
             <button class="stack-dot" aria-label="Tarjeta 2" onclick="switchHeroCard(1)"></button>
@@ -231,7 +240,7 @@
     </section>
 
     <!-- ==========================================================================
-         INFINITE MARQUEE TICKER (CLEAN & FLUID)
+         INFINITE MARQUEE TICKER
          ========================================================================== -->
     <div class="ticker-marquee-wrap">
       <div class="ticker-track">
@@ -244,7 +253,7 @@
         <div class="ticker-item">Modelo 50/50 Cero Riesgo <span class="star">✦</span></div>
         <div class="ticker-item">WhatsApp: 2945-331018 <span class="star">✦</span></div>
         <div class="ticker-item">Esquel Chubut Patagonia <span class="star">✦</span></div>
-        <!-- Duplicate for loop -->
+        <!-- Duplicate -->
         <div class="ticker-item">Certificaciones Mundiales en IA <span class="star">✦</span></div>
         <div class="ticker-item">Programación &amp; Software <span class="star">✦</span></div>
         <div class="ticker-item">Ciberseguridad Blindada <span class="star">✦</span></div>
@@ -258,14 +267,20 @@
     </div>
 
     <!-- ==========================================================================
-         SHOWCASE CARDS: BOLD COLORED STACKS (FIXED STICKERS - ALWAYS UPRIGHT!)
+         REACT COMPONENT: LIVE EDGE TERMINAL & SYSTEM MONITOR
+         ========================================================================== -->
+    <section class="container" id="terminal" style="padding-top: 3rem;">
+      <div id="reactTerminalMount"></div>
+    </section>
+
+    <!-- ==========================================================================
+         SHOWCASE CARDS
          ========================================================================== -->
     <section class="showcases-wrapper" id="proyectos">
       <div class="container" style="display: flex; flex-direction: column; gap: 3.5rem;">
         
         <!-- PROJECT 1: E-COMMERCE (THEME BLUE) -->
         <div class="jake-project-card theme-blue" id="projectCard1">
-          <!-- Always Upright Sticker with Orbiting Ring -->
           <div class="circular-sticker">
             <span class="sticker-small-tag">Velocidad</span>
             <span class="sticker-main-text">0.2s</span>
@@ -295,7 +310,6 @@
 
         <!-- PROJECT 2: CIBERSEGURIDAD BLINDADA (THEME EMERALD) -->
         <div class="jake-project-card theme-emerald" id="projectCard2">
-          <!-- Always Upright Sticker with Orbiting Ring -->
           <div class="circular-sticker">
             <span class="sticker-small-tag">Blindaje</span>
             <span class="sticker-main-text">100%</span>
@@ -325,7 +339,6 @@
 
         <!-- PROJECT 3: FUTURO 3D & VIDEOJUEGOS (THEME PURPLE) -->
         <div class="jake-project-card theme-purple" id="projectCard3">
-          <!-- Always Upright Sticker with Orbiting Ring -->
           <div class="circular-sticker">
             <span class="sticker-small-tag">Next-Gen</span>
             <span class="sticker-main-text" style="font-size: 0.95rem;">3D/Games</span>
@@ -357,7 +370,7 @@
     </section>
 
     <!-- ==========================================================================
-         MODELO CERO RIESGO 50/50: EDITORIAL STEPS
+         MODELO CERO RIESGO 50/50
          ========================================================================== -->
     <section class="editorial-section" id="modelo-5050">
       <div class="container">
@@ -585,11 +598,10 @@
             Certificaciones Mundiales &amp; Visión de Futuro
           </h2>
           <p style="font-size: 1.05rem; max-width: 680px;">
-            Contamos con certificaciones internacionales en tres pilares fundamentales, con un horizonte claro hacia el diseño 3D interactivo y la creación de videojuegos.
+            Validaciones internacionales en tres pilares fundamentales, con un horizonte claro hacia el diseño 3D interactivo y la creación de videojuegos.
           </p>
         </div>
 
-        <!-- 3 Pillars Grid -->
         <div class="editorial-number-grid" style="margin-bottom: 2.5rem;">
           
           <div class="editorial-step-card">
@@ -618,7 +630,7 @@
 
         </div>
 
-        <!-- Future Roadmap: 3D & Video Games -->
+        <!-- 3D & Gaming Roadmap -->
         <div style="background: var(--bg-card); border: 1px solid var(--border-medium); border-radius: var(--radius-lg); padding: clamp(1.5rem, 3.5vw, 3rem); position: relative; overflow: hidden;">
           <div style="max-width: 720px; position: relative; z-index: 2;">
             <span class="pill-badge" style="margin-bottom: 0.85rem; color: var(--accent-purple); border-color: rgba(168, 85, 247, 0.3);">Roadmap &amp; Futuro</span>
@@ -709,6 +721,24 @@
     </section>
 
     <!-- ==========================================================================
+         REACT COMPONENT: LIVE WHATSAPP CHAT SIMULATOR (MOBILE-FIRST)
+         ========================================================================== -->
+    <section class="editorial-section" id="chat-sim" style="padding-top: 0;">
+      <div class="container">
+        <div class="editorial-title-box" style="text-align: center; margin-bottom: 1.5rem;">
+          <span class="pill-badge" style="margin-bottom: 0.5rem; color: #25D366; border-color: rgba(37, 211, 102, 0.3);">Interactúa con nosotros</span>
+          <h2 style="font-size: clamp(1.85rem, 4vw, 3rem);">Chat en Vivo: Preguntale a SKB Craft</h2>
+          <p style="max-width: 580px; margin: 0.5rem auto 0 auto; font-size: 0.95rem;">
+            Probá nuestro simulador interactivo para sacarte cualquier duda al instante antes de iniciar tu maqueta gratuita.
+          </p>
+        </div>
+
+        <!-- React Mount for WhatsApp Simulator -->
+        <div id="reactWhatsappMount"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
          FAQ & PLAN DE CONTINGENCIA
          ========================================================================== -->
     <section class="editorial-section" id="faq" style="padding-top: 0;">
@@ -780,16 +810,17 @@
 
         <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem;">
           <div style="color: #fff; font-weight: 700;">Navegación</div>
-          <a href="#proyectos" style="color: var(--text-muted);">Proyectos &amp; Showcases</a>
-          <a href="#modelo-5050" style="color: var(--text-muted);">Modelo 50/50 Anti-Estafa</a>
-          <a href="#servicios" style="color: var(--text-muted);">Servicios &amp; Precios</a>
-          <a href="#cotizador" style="color: var(--text-muted);">Simulador Interactivo</a>
-          <a href="#certificaciones" style="color: var(--text-muted);">Certificaciones &amp; 3D</a>
-          <a href="#equipo" style="color: var(--text-muted);">Equipo Técnico</a>
+          <a href="#proyectos" style="color: var(--text-dim);">Proyectos &amp; Showcases</a>
+          <a href="#terminal" style="color: var(--text-dim);">Terminal de Estado</a>
+          <a href="#modelo-5050" style="color: var(--text-dim);">Modelo 50/50 Anti-Estafa</a>
+          <a href="#servicios" style="color: var(--text-dim);">Servicios &amp; Precios</a>
+          <a href="#cotizador" style="color: var(--text-dim);">Simulador Interactivo</a>
+          <a href="#certificaciones" style="color: var(--text-dim);">Certificaciones &amp; 3D</a>
+          <a href="#equipo" style="color: var(--text-dim);">Equipo Técnico</a>
         </div>
       </div>
 
-      <div style="padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; font-size: 0.78rem; color: var(--text-muted);">
+      <div style="padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.75rem; font-size: 0.78rem; color: var(--text-dim);">
         <div>&copy; 2026 SKB Craft. Esquel, Chubut, Patagonia Argentina.</div>
         <div>Escuela N° 713 "Juan Abdala Chayep" — Evaluación 26/10/2026.</div>
       </div>
@@ -809,7 +840,7 @@
   </div>
 
   <!-- ==========================================================================
-       DOSSIER PLAN DE NEGOCIOS MODAL (FULL DOCUMENT VIEWER)
+       DOSSIER PLAN DE NEGOCIOS MODAL
        ========================================================================== -->
   <div class="dossier-modal" id="dossierModal" role="dialog" aria-modal="true" aria-labelledby="dossierTitle">
     <div class="dossier-backdrop" id="dossierBackdrop"></div>
@@ -876,7 +907,7 @@
     </div>
   </div>
 
-  <!-- Main JavaScript File -->
+  <!-- Main JavaScript with React Components & Web Audio Synthesizer -->
   <script src="./app.js"></script>
 </body>
 </html>
