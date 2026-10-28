@@ -446,13 +446,13 @@ function initCalculator() {
       const half = Math.round(total / 2);
 
       let msg = `Hola equipo de SKB Craft! Estuve usando el cotizador de su web y quiero solicitar la Maqueta Inicial Cero Riesgo para mi proyecto:%0A%0A`;
-      msg += `[*] *Tipo de Proyecto:* ${calcData.title}%0A`;
-      msg += `[$] *Presupuesto Estimado:* $${formatNum(total)} ARS%0A`;
-      msg += `[#] *Esquema 50/50:* Maqueta $0 ARS -> 1° Pago $${formatNum(half)} ARS al iniciar código -> 2° Pago $${formatNum(half)} ARS en producción.%0A`;
+      msg += `*Tipo de Proyecto:* ${calcData.title}%0A`;
+      msg += `*Presupuesto Estimado:* $${formatNum(total)} ARS%0A`;
+      msg += `*Esquema 50/50:* Maqueta $0 ARS -> 1° Pago $${formatNum(half)} ARS al iniciar código -> 2° Pago $${formatNum(half)} ARS en producción.%0A`;
       if (calcData.monthly > 0) {
-        msg += `[+] *Suscripción Mantenimiento:* $${formatNum(calcData.monthly)} ARS/mes%0A`;
+        msg += `*Suscripción Mantenimiento:* $${formatNum(calcData.monthly)} ARS/mes%0A`;
       }
-      msg += `[~] *Plazo estimado:* ~${calcData.days} días hábiles.%0A%0A¿Podemos coordinar para ver el prototipo inicial?`;
+      msg += `*Plazo estimado:* ~${calcData.days} días hábiles.%0A%0A¿Podemos coordinar para ver el prototipo inicial?`;
 
       window.open(`https://wa.me/5492945331018?text=${msg}`, '_blank', 'noopener,noreferrer');
     });
@@ -482,7 +482,7 @@ function updateCalc() {
   secondEl.textContent = `$${formatNum(half)} ARS`;
 
   if (daysEl) {
-    daysEl.textContent = `Δ Plazo estimado: ~${calcData.days} días hábiles`;
+    daysEl.textContent = `Plazo estimado: ~${calcData.days} días hábiles`;
   }
 }
 
