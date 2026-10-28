@@ -21,10 +21,6 @@
   <!-- Main CSS -->
   <link rel="stylesheet" href="./styles.css">
 
-  <!-- React 18 & ReactDOM via CDN -->
-  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
-  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
-
   <!-- GSAP & ScrollTrigger CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -50,23 +46,16 @@
       <!-- Desktop Nav -->
       <ul class="nav-links-desktop">
         <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#terminal">Terminal</a></li>
         <li><a href="#modelo-5050">Modelo 50/50</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#cotizador">Cotizador</a></li>
-        <li><a href="#certificaciones">Certificaciones</a></li>
+        <li><a href="#certificaciones">Certificaciones &amp; 3D</a></li>
         <li><a href="#equipo">Equipo</a></li>
-        <li><a href="#chat-sim">Chat en Vivo</a></li>
+        <li><a href="#faq">Garantías</a></li>
       </ul>
 
       <!-- Right Actions -->
       <div class="nav-actions-right">
-        <!-- Audio Haptics Toggle -->
-        <button class="sound-toggle-btn" id="soundToggleBtn" aria-label="Activar o desactivar sonido táctil" title="Sonido Háptico UI">
-          <span id="soundIcon">🔊</span>
-          <span id="soundLabel">Haptic</span>
-        </button>
-
         <button class="btn-pill btn-pill-dark" id="btnOpenDossierNav" style="padding: 0.45rem 0.85rem; font-size: 0.78rem;">
           <span>Plan 2026</span>
         </button>
@@ -88,10 +77,6 @@
         <span>Proyectos</span>
         <span>&rarr;</span>
       </a>
-      <a href="#terminal" class="mobile-top-drawer-link">
-        <span>Terminal Edge</span>
-        <span style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.75rem;">$ ping</span>
-      </a>
       <a href="#modelo-5050" class="mobile-top-drawer-link">
         <span>Modelo 50/50</span>
         <span style="color: var(--accent-emerald);">Cero Riesgo</span>
@@ -108,9 +93,9 @@
         <span>Certificaciones &amp; 3D</span>
         <span>&rarr;</span>
       </a>
-      <a href="#chat-sim" class="mobile-top-drawer-link">
-        <span>Chat Simulator</span>
-        <span style="color: #25D366;">WhatsApp</span>
+      <a href="#equipo" class="mobile-top-drawer-link">
+        <span>Equipo Técnico</span>
+        <span>&rarr;</span>
       </a>
       <a href="javascript:void(0)" class="mobile-top-drawer-link" id="btnDrawerOpenDossier">
         <span>Dossier Oficial</span>
@@ -119,9 +104,9 @@
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-      <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20solicitar%20mi%20maqueta%20inicial%20gratuita" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-white" style="width: 100%; justify-content: center;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-        <span>WhatsApp Directo (2945-331018)</span>
+      <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20solicitar%20mi%20maqueta%20inicial%20gratuita" target="_blank" rel="noopener noreferrer" class="btn-pill btn-whatsapp-solid" style="width: 100%; justify-content: center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+        <span>Chatear por WhatsApp</span>
       </a>
     </div>
   </div>
@@ -138,12 +123,12 @@
       <!-- Mobile Quick Horizontal Scrollbar -->
       <div class="mobile-quick-scroll-bar">
         <a href="#proyectos" class="quick-pill-item">Proyectos</a>
-        <a href="#terminal" class="quick-pill-item">Terminal</a>
         <a href="#modelo-5050" class="quick-pill-item">Modelo 50/50</a>
         <a href="#servicios" class="quick-pill-item">Servicios</a>
         <a href="#cotizador" class="quick-pill-item">Cotizador</a>
         <a href="#certificaciones" class="quick-pill-item">Certificaciones</a>
-        <a href="#chat-sim" class="quick-pill-item">Chat en Vivo</a>
+        <a href="#equipo" class="quick-pill-item">Equipo</a>
+        <a href="#faq" class="quick-pill-item">Garantías</a>
       </div>
 
       <div class="container hero-grid">
@@ -169,8 +154,9 @@
               <span>Solicitar Maqueta 50/50</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </a>
-            <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20consultar%20por%20un%20proyecto%20web" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-dark">
-              <span>WhatsApp: 2945-331018</span>
+            <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20consultar%20por%20un%20proyecto%20web" target="_blank" rel="noopener noreferrer" class="btn-pill btn-whatsapp-direct">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+              <span>Chatear por WhatsApp</span>
             </a>
           </div>
 
@@ -251,7 +237,7 @@
         <div class="ticker-item">Next.js &amp; React <span class="star">✦</span></div>
         <div class="ticker-item">Appwrite &amp; Cloudflare <span class="star">✦</span></div>
         <div class="ticker-item">Modelo 50/50 Cero Riesgo <span class="star">✦</span></div>
-        <div class="ticker-item">WhatsApp: 2945-331018 <span class="star">✦</span></div>
+        <div class="ticker-item">Atención Directa por WhatsApp <span class="star">✦</span></div>
         <div class="ticker-item">Esquel Chubut Patagonia <span class="star">✦</span></div>
         <!-- Duplicate -->
         <div class="ticker-item">Certificaciones Mundiales en IA <span class="star">✦</span></div>
@@ -261,17 +247,10 @@
         <div class="ticker-item">Next.js &amp; React <span class="star">✦</span></div>
         <div class="ticker-item">Appwrite &amp; Cloudflare <span class="star">✦</span></div>
         <div class="ticker-item">Modelo 50/50 Cero Riesgo <span class="star">✦</span></div>
-        <div class="ticker-item">WhatsApp: 2945-331018 <span class="star">✦</span></div>
+        <div class="ticker-item">Atención Directa por WhatsApp <span class="star">✦</span></div>
         <div class="ticker-item">Esquel Chubut Patagonia <span class="star">✦</span></div>
       </div>
     </div>
-
-    <!-- ==========================================================================
-         REACT COMPONENT: LIVE EDGE TERMINAL & SYSTEM MONITOR
-         ========================================================================== -->
-    <section class="container" id="terminal" style="padding-top: 3rem;">
-      <div id="reactTerminalMount"></div>
-    </section>
 
     <!-- ==========================================================================
          SHOWCASE CARDS
@@ -490,92 +469,135 @@
 
         <div class="calculator-box-jake">
           
-          <div>
-            <h4 style="font-size: 1.05rem; margin-bottom: 0.85rem; color: #fff;">1. Seleccioná el Tipo de Proyecto</h4>
+          <div class="calc-controls-col">
+            <div class="calc-section-label">
+              <span class="calc-step-num">1</span>
+              <h4>Seleccioná el Tipo de Proyecto</h4>
+            </div>
+
             <div class="calc-selector-grid">
               <button type="button" class="calc-btn-option selected" data-type="landing" data-base="150000" data-days="5">
+                <div class="calc-btn-top">
+                  <span class="calc-btn-icon">⚡</span>
+                  <span class="calc-badge-check">✓</span>
+                </div>
                 <div class="calc-btn-title">Landing Page</div>
-                <div class="calc-btn-sub">Conversión y leads (~5 días)</div>
+                <div class="calc-btn-price">Desde $150k</div>
+                <div class="calc-btn-days">Entrega ~5 días</div>
               </button>
+
               <button type="button" class="calc-btn-option" data-type="institucional" data-base="450000" data-days="12">
-                <div class="calc-btn-title">Web Institucional</div>
-                <div class="calc-btn-sub">Multipestaña marcas (~12 días)</div>
+                <div class="calc-btn-top">
+                  <span class="calc-btn-icon">🏢</span>
+                  <span class="calc-badge-check">✓</span>
+                </div>
+                <div class="calc-btn-title">Web Pro</div>
+                <div class="calc-btn-price">Desde $450k</div>
+                <div class="calc-btn-days">Entrega ~12 días</div>
               </button>
+
               <button type="button" class="calc-btn-option" data-type="ecommerce" data-base="1200000" data-days="20">
-                <div class="calc-btn-title">E-Commerce Tienda</div>
-                <div class="calc-btn-sub">Venta online catálogo (~20 días)</div>
+                <div class="calc-btn-top">
+                  <span class="calc-btn-icon">🛒</span>
+                  <span class="calc-badge-check">✓</span>
+                </div>
+                <div class="calc-btn-title">E-Commerce</div>
+                <div class="calc-btn-price">Desde $1.2M</div>
+                <div class="calc-btn-days">Entrega ~20 días</div>
               </button>
+
               <button type="button" class="calc-btn-option" data-type="webapp" data-base="2800000" data-days="35">
-                <div class="calc-btn-title">Web App / Custom</div>
-                <div class="calc-btn-sub">Bases de datos dynamic (~35 días)</div>
+                <div class="calc-btn-top">
+                  <span class="calc-btn-icon">💻</span>
+                  <span class="calc-badge-check">✓</span>
+                </div>
+                <div class="calc-btn-title">Web App</div>
+                <div class="calc-btn-price">Desde $2.8M</div>
+                <div class="calc-btn-days">Entrega ~35 días</div>
               </button>
             </div>
 
-            <h4 style="font-size: 1.05rem; margin-bottom: 0.85rem; color: #fff;">2. Módulos &amp; Seguridad</h4>
-            <div style="display: flex; flex-direction: column; gap: 0.65rem;">
-              <label style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer;">
-                <input type="checkbox" id="addonPayments" data-add="180000" style="accent-color: var(--accent-cyan); width: 18px; height: 18px;">
-                <div style="flex: 1;">
-                  <div style="font-size: 0.85rem; font-weight: 600; color: #fff;">Pasarela MercadoPago / Stripe / PayPal</div>
-                  <div style="font-size: 0.72rem; color: var(--text-muted);">Integración y checkout cifrado (+ $180.000 ARS)</div>
+            <div class="calc-section-label" style="margin-top: 1.5rem;">
+              <span class="calc-step-num">2</span>
+              <h4>Módulos &amp; Seguridad Opcionales</h4>
+            </div>
+
+            <div class="calc-modules-list">
+              <label class="calc-toggle-row">
+                <input type="checkbox" id="addonPayments" data-add="180000" class="calc-checkbox-input">
+                <div class="calc-toggle-info">
+                  <div class="calc-toggle-title">💳 Pasarela MercadoPago / Stripe</div>
+                  <div class="calc-toggle-sub">Checkout seguro cifrado SSL (+ $180k)</div>
+                </div>
+                <div class="calc-toggle-right">
+                  <span class="calc-switch-slider"></span>
                 </div>
               </label>
 
-              <label style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer;">
-                <input type="checkbox" id="addonDb" data-add="220000" style="accent-color: var(--accent-cyan); width: 18px; height: 18px;">
-                <div style="flex: 1;">
-                  <div style="font-size: 0.85rem; font-weight: 600; color: #fff;">Base de Datos Appwrite / Postgres</div>
-                  <div style="font-size: 0.72rem; color: var(--text-muted);">Manejo de usuarios, login y registros (+ $220.000 ARS)</div>
+              <label class="calc-toggle-row">
+                <input type="checkbox" id="addonDb" data-add="220000" class="calc-checkbox-input">
+                <div class="calc-toggle-info">
+                  <div class="calc-toggle-title">🗄️ Base de Datos Appwrite / Postgres</div>
+                  <div class="calc-toggle-sub">Registro, login y usuarios (+ $220k)</div>
+                </div>
+                <div class="calc-toggle-right">
+                  <span class="calc-switch-slider"></span>
                 </div>
               </label>
 
-              <label style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer;">
-                <input type="checkbox" id="addonSecurity" data-add="150000" style="accent-color: var(--accent-cyan); width: 18px; height: 18px;">
-                <div style="flex: 1;">
-                  <div style="font-size: 0.85rem; font-weight: 600; color: #fff;">Auditoría Pentesting &amp; WAF Blindado</div>
-                  <div style="font-size: 0.72rem; color: var(--text-muted);">Protección anti-DDoS e inyecciones SQL (+ $150.000 ARS)</div>
+              <label class="calc-toggle-row">
+                <input type="checkbox" id="addonSecurity" data-add="150000" class="calc-checkbox-input">
+                <div class="calc-toggle-info">
+                  <div class="calc-toggle-title">🛡️ Pentesting &amp; WAF Blindado</div>
+                  <div class="calc-toggle-sub">Anti-DDoS y blindaje SQL (+ $150k)</div>
+                </div>
+                <div class="calc-toggle-right">
+                  <span class="calc-switch-slider"></span>
                 </div>
               </label>
 
-              <label style="display: flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-sm); cursor: pointer;">
-                <input type="checkbox" id="addonSaaS" data-add="45000" data-is-monthly="true" style="accent-color: var(--accent-cyan); width: 18px; height: 18px;">
-                <div style="flex: 1;">
-                  <div style="font-size: 0.85rem; font-weight: 600; color: #fff;">Mantenimiento y Hosting Cloudflare Mensual</div>
-                  <div style="font-size: 0.72rem; color: var(--text-muted);">Backups diarios y soporte RustDesk (+ $45.000 ARS/mes)</div>
+              <label class="calc-toggle-row">
+                <input type="checkbox" id="addonSaaS" data-add="45000" data-is-monthly="true" class="calc-checkbox-input">
+                <div class="calc-toggle-info">
+                  <div class="calc-toggle-title">☁️ Mantenimiento Cloudflare Mensual</div>
+                  <div class="calc-toggle-sub">Backups y soporte continuo (+ $45k/mes)</div>
+                </div>
+                <div class="calc-toggle-right">
+                  <span class="calc-switch-slider"></span>
                 </div>
               </label>
             </div>
           </div>
 
-          <!-- Summary Side -->
+          <!-- Summary Side (Optimized for Mobile) -->
           <div class="summary-card-jake">
-            <div>
-              <span class="pill-badge" style="margin-bottom: 1rem;">Presupuesto Estimado</span>
+            <div class="summary-header-mobile">
+              <span class="pill-badge active-indicator">Presupuesto Estimado</span>
               <div class="summary-big-total" id="calcTotalVal">$150.000 ARS</div>
-              <div style="font-size: 0.82rem; color: var(--accent-emerald); font-family: var(--font-mono); margin-bottom: 1.25rem;" id="calcDeliveryDays">
-                Plazo estimado: ~5 días hábiles
+              <div class="calc-delivery-pill" id="calcDeliveryDays">
+                ⏱️ Plazo estimado: ~5 días hábiles
               </div>
+            </div>
 
-              <div style="background: rgba(255,255,255,0.04); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.25rem;">
-                <div class="split-pill-row">
-                  <span style="color: var(--text-muted);">Maqueta inicial:</span>
-                  <span style="color: var(--accent-emerald); font-weight: 700; font-family: var(--font-mono);">$0 ARS (GRATIS)</span>
-                </div>
-                <div class="split-pill-row">
-                  <span style="color: var(--text-muted);">1° Pago (50% al iniciar código):</span>
-                  <span style="color: #fff; font-weight: 700; font-family: var(--font-mono);" id="calcHalfFirst">$75.000 ARS</span>
-                </div>
-                <div class="split-pill-row">
-                  <span style="color: var(--text-muted);">2° Pago (50% en producción):</span>
-                  <span style="color: #fff; font-weight: 700; font-family: var(--font-mono);" id="calcHalfSecond">$75.000 ARS</span>
-                </div>
+            <div class="calc-breakdown-box">
+              <div class="split-pill-row">
+                <span class="breakdown-lbl">Maqueta inicial:</span>
+                <span class="breakdown-val highlight-free">$0 ARS (GRATIS)</span>
+              </div>
+              <div class="split-pill-row">
+                <span class="breakdown-lbl">1° Pago (50% al iniciar):</span>
+                <span class="breakdown-val" id="calcHalfFirst">$75.000 ARS</span>
+              </div>
+              <div class="split-pill-row">
+                <span class="breakdown-lbl">2° Pago (50% en producción):</span>
+                <span class="breakdown-val" id="calcHalfSecond">$75.000 ARS</span>
               </div>
             </div>
 
             <div>
-              <button class="btn-pill btn-pill-white" style="width: 100%; justify-content: center;" id="btnSendQuoteWhatsapp">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <span>Solicitar por WhatsApp (2945-331018)</span>
+              <button class="btn-pill btn-whatsapp-solid" style="width: 100%; justify-content: center; padding: 0.85rem; font-size: 0.95rem;" id="btnSendQuoteWhatsapp">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+                <span>Solicitar Maqueta por WhatsApp</span>
               </button>
             </div>
 
@@ -721,24 +743,6 @@
     </section>
 
     <!-- ==========================================================================
-         REACT COMPONENT: LIVE WHATSAPP CHAT SIMULATOR (MOBILE-FIRST)
-         ========================================================================== -->
-    <section class="editorial-section" id="chat-sim" style="padding-top: 0;">
-      <div class="container">
-        <div class="editorial-title-box" style="text-align: center; margin-bottom: 1.5rem;">
-          <span class="pill-badge" style="margin-bottom: 0.5rem; color: #25D366; border-color: rgba(37, 211, 102, 0.3);">Interactúa con nosotros</span>
-          <h2 style="font-size: clamp(1.85rem, 4vw, 3rem);">Chat en Vivo: Preguntale a SKB Craft</h2>
-          <p style="max-width: 580px; margin: 0.5rem auto 0 auto; font-size: 0.95rem;">
-            Probá nuestro simulador interactivo para sacarte cualquier duda al instante antes de iniciar tu maqueta gratuita.
-          </p>
-        </div>
-
-        <!-- React Mount for WhatsApp Simulator -->
-        <div id="reactWhatsappMount"></div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
          FAQ & PLAN DE CONTINGENCIA
          ========================================================================== -->
     <section class="editorial-section" id="faq" style="padding-top: 0;">
@@ -768,7 +772,7 @@
 
           <div class="editorial-step-card" style="padding: 1.25rem 1.5rem;">
             <h4 style="font-size: 1.08rem; color: #fff; margin-bottom: 0.4rem;">¿Cómo se brinda asistencia técnica remota post-entrega?</h4>
-            <p>Brindamos atención directa por WhatsApp (<strong>2945-331018</strong>) y videollamadas en Google Meet. Para configuraciones avanzadas o soporte en el equipo del cliente, utilizamos conexiones encriptadas punto a punto con RustDesk.</p>
+            <p>Brindamos atención directa por WhatsApp y videollamadas en Google Meet. Para configuraciones avanzadas o soporte en el equipo del cliente, utilizamos conexiones encriptadas punto a punto con RustDesk.</p>
           </div>
 
         </div>
@@ -787,22 +791,16 @@
         <div>
           <span class="pill-badge active-indicator" style="margin-bottom: 1.25rem;">Cupos Limitados: 3 Proyectos / Mes</span>
           <h2 class="footer-big-contact-title">¿Digitalizamos tu negocio?</h2>
-          <p style="font-size: 1.05rem; max-width: 500px; margin-bottom: 1.25rem;">
+          <p style="font-size: 1.05rem; max-width: 500px; margin-bottom: 1.5rem;">
             Escribinos hoy y te preparamos una maqueta funcional de prueba sin ningún tipo de costo inicial ni compromiso.
           </p>
-          
-          <div style="font-family: var(--font-mono); font-size: 1.05rem; color: #fff; margin-bottom: 1.75rem;">
-            <span>WhatsApp / Tel: </span>
-            <a href="https://wa.me/5492945331018" target="_blank" rel="noopener noreferrer" style="color: var(--accent-emerald); font-weight: 700; text-decoration: underline;">
-              +54 9 2945 33-1018
-            </a>
-          </div>
 
-          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
-            <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20solicitar%20la%20maqueta%20inicial%20de%20prueba" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-white">
-              <span>Contactar al 2945331018</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;">
+            <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20solicitar%20la%20maqueta%20inicial%20de%20prueba" target="_blank" rel="noopener noreferrer" class="btn-pill btn-whatsapp-solid" style="padding: 0.7rem 1.25rem; font-size: 0.95rem;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+              <span>Escribinos por WhatsApp</span>
             </a>
-            <button class="btn-pill btn-pill-dark" id="btnFooterDossier">
+            <button class="btn-pill btn-pill-dark" id="btnFooterDossier" style="padding: 0.7rem 1.25rem;">
               <span>Leer Plan de Negocios Oficial</span>
             </button>
           </div>
@@ -811,12 +809,12 @@
         <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem;">
           <div style="color: #fff; font-weight: 700;">Navegación</div>
           <a href="#proyectos" style="color: var(--text-dim);">Proyectos &amp; Showcases</a>
-          <a href="#terminal" style="color: var(--text-dim);">Terminal de Estado</a>
           <a href="#modelo-5050" style="color: var(--text-dim);">Modelo 50/50 Anti-Estafa</a>
           <a href="#servicios" style="color: var(--text-dim);">Servicios &amp; Precios</a>
-          <a href="#cotizador" style="color: var(--text-dim);">Simulador Interactivo</a>
+          <a href="#cotizador" style="color: var(--text-dim);">Cotizador 50/50</a>
           <a href="#certificaciones" style="color: var(--text-dim);">Certificaciones &amp; 3D</a>
           <a href="#equipo" style="color: var(--text-dim);">Equipo Técnico</a>
+          <a href="#faq" style="color: var(--text-dim);">Garantías &amp; Soporte</a>
         </div>
       </div>
 
@@ -830,14 +828,25 @@
   <!-- Mobile Sticky Bottom Dock -->
   <div class="mobile-sticky-dock">
     <div>
-      <div style="font-family: var(--font-display); font-weight: 800; font-size: 0.9rem; color: #fff;">SKB Craft</div>
-      <div style="font-size: 0.68rem; color: var(--accent-emerald); font-family: var(--font-mono);">WhatsApp: 2945-331018</div>
+      <div style="font-family: var(--font-display); font-weight: 800; font-size: 0.95rem; color: #fff;">SKB Craft</div>
+      <div style="font-size: 0.72rem; color: var(--accent-emerald); font-family: var(--font-mono); display: flex; align-items: center; gap: 0.35rem;">
+        <span style="width: 7px; height: 7px; border-radius: 50%; background: #25D366; display: inline-block;"></span>
+        Online en WhatsApp
+      </div>
     </div>
-    <div style="display: flex; gap: 0.5rem;">
-      <a href="#cotizador" class="btn-pill btn-pill-dark" style="padding: 0.4rem 0.75rem; font-size: 0.78rem;">Cotizar</a>
-      <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20solicitar%20la%20maqueta%20inicial%20de%20prueba" target="_blank" rel="noopener noreferrer" class="btn-pill btn-pill-white" style="padding: 0.4rem 0.85rem; font-size: 0.78rem;">WhatsApp</a>
+    <div style="display: flex; gap: 0.5rem; align-items: center;">
+      <a href="#cotizador" class="btn-pill btn-pill-dark" style="padding: 0.45rem 0.8rem; font-size: 0.78rem;">Cotizar</a>
+      <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20solicitar%20la%20maqueta%20inicial%20de%20prueba" target="_blank" rel="noopener noreferrer" class="btn-pill btn-whatsapp-solid" style="padding: 0.45rem 0.9rem; font-size: 0.8rem; gap: 0.4rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+        <span>WhatsApp</span>
+      </a>
     </div>
   </div>
+
+  <!-- Floating WhatsApp Action Button (Global) -->
+  <a href="https://wa.me/5492945331018?text=Hola%20SKB%20Craft,%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="floating-wa-btn" aria-label="Enviar mensaje por WhatsApp" title="Chatear por WhatsApp">
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="#ffffff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+  </a>
 
   <!-- ==========================================================================
        DOSSIER PLAN DE NEGOCIOS MODAL
@@ -860,7 +869,7 @@
           <p><strong>Institución:</strong> Escuela N° 713 "Juan Abdala Chayep" - Esquel, Chubut, Argentina</p>
           <p><strong>Integrantes:</strong> Jeremías Uriel Salonio Romanchuk (Director High-End), Aron Alexander Cornelio Gutiérrez, Nicolas Ezequiel Echaury Troncoso</p>
           <p><strong>Fecha de Presentación:</strong> 19/10/2026 | <strong>Fecha de Evaluación Grupal:</strong> 26/10/2026</p>
-          <p><strong>Contacto Directo:</strong> +54 9 2945 33-1018</p>
+          <p><strong>Contacto Directo:</strong> <a href="https://wa.me/5492945331018" target="_blank" rel="noopener noreferrer" style="color: var(--accent-emerald); font-weight: 700; text-decoration: underline;">Canal Oficial de WhatsApp</a></p>
         </div>
 
         <h2>1. Resumen Ejecutivo</h2>
