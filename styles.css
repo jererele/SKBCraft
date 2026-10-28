@@ -627,6 +627,9 @@ a {
   max-width: 420px;
   height: 380px;
   margin: 0 auto;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 @media (min-width: 480px) {
@@ -652,9 +655,30 @@ a {
   overflow: hidden;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.12);
   background: #11141b;
-  cursor: pointer;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-  will-change: transform;
+  cursor: grab;
+  will-change: transform, opacity;
+  touch-action: none;
+}
+
+.stack-card.dragging {
+  cursor: grabbing;
+  transition: none !important;
+}
+
+.btn-pill,
+.calc-btn-option,
+.mobile-top-drawer-link,
+.quick-pill-item,
+.nav-menu-btn {
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-pill:active,
+.calc-btn-option:active,
+.mobile-top-drawer-link:active,
+.nav-menu-btn:active {
+  transform: scale(0.96) !important;
 }
 
 .stack-card img {

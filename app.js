@@ -94,40 +94,44 @@ function initTopDrawer() {
 }
 
 /* ==========================================================================
-   3. HERO NATURAL CARD STACK & CAROUSEL
+   3. HERO NATURAL CARD STACK & CAROUSEL (TOUCH SWIPE / DRAG ENABLED)
    ========================================================================== */
 function initHeroCardStack() {
-  window.switchHeroCard = function(index) {
-    currentHeroCard = index;
-    const cards = [
-      document.getElementById('stackCard0'),
-      document.getElementById('stackCard1'),
-      document.getElementById('stackCard2'),
-      document.getElementById('stackCard3')
-    ];
-    const dots = document.querySelectorAll('.stack-dot');
+  const stage = document.getElementById('heroDeckStage');
+  const cards = [
+    document.getElementById('stackCard0'),
+    document.getElementById('stackCard1'),
+    document.getElementById('stackCard2'),
+    document.getElementById('stackCard3')
+  ];
+  const dots = document.querySelectorAll('.stack-dot');
 
-    if (!cards[0]) return;
+  if (!cards[0] || !stage) return;
+
+  const offsets = [
+    { y: 0, scale: 1, opacity: 1, z: 4 },
+    { y: -16, scale: 0.95, opacity: 0.85, z: 3 },
+    { y: -30, scale: 0.90, opacity: 0.65, z: 2 },
+    { y: -42, scale: 0.85, opacity: 0.45, z: 1 }
+  ];
+
+  window.switchHeroCard = function(index) {
+    currentHeroCard = (index + 4) % 4;
 
     dots.forEach((d, i) => {
-      d.classList.toggle('active', i === index);
+      d.classList.toggle('active', i === currentHeroCard);
     });
-
-    const offsets = [
-      { y: 0, scale: 1, opacity: 1, z: 4 },
-      { y: -16, scale: 0.95, opacity: 0.85, z: 3 },
-      { y: -30, scale: 0.90, opacity: 0.65, z: 2 },
-      { y: -42, scale: 0.85, opacity: 0.45, z: 1 }
-    ];
 
     cards.forEach((card, i) => {
       if (!card) return;
-      const order = (i - index + 4) % 4;
+      const order = (i - currentHeroCard + 4) % 4;
       const config = offsets[order];
 
       if (typeof gsap !== 'undefined') {
         gsap.to(card, {
+          x: 0,
           y: config.y,
+          rotation: 0,
           scale: config.scale,
           opacity: config.opacity,
           zIndex: config.z,
@@ -136,7 +140,7 @@ function initHeroCardStack() {
           overwrite: 'auto'
         });
       } else {
-        card.style.transform = `translateY(${config.y}px) scale(${config.scale})`;
+        card.style.transform = `translate3d(0, ${config.y}px, 0) scale(${config.scale})`;
         card.style.opacity = config.opacity;
         card.style.zIndex = config.z;
       }
@@ -150,8 +154,122 @@ function initHeroCardStack() {
     heroStackTimer = setInterval(() => {
       const next = (currentHeroCard + 1) % 4;
       window.switchHeroCard(next);
-    }, 4800);
+    }, 5200);
   }
+
+  // --- TOUCH / POINTER DRAG GESTURES (MOBILE FIRST) ---
+  let isDragging = false;
+  let startX = 0;
+  let startY = 0;
+  let deltaX = 0;
+  let deltaY = 0;
+  let activeCard = null;
+
+  function onPointerDown(e) {
+    activeCard = cards[currentHeroCard];
+    if (!activeCard) return;
+
+    isDragging = true;
+    startX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    startY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+    deltaX = 0;
+    deltaY = 0;
+
+    if (heroStackTimer) clearInterval(heroStackTimer);
+    activeCard.classList.add('dragging');
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging || !activeCard) return;
+
+    const currentX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    const currentY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
+
+    deltaX = currentX - startX;
+    deltaY = currentY - startY;
+
+    // Follow finger with subtle rotation
+    const rot = deltaX * 0.08;
+    const scale = 1;
+
+    if (typeof gsap !== 'undefined') {
+      gsap.set(activeCard, {
+        x: deltaX,
+        y: deltaY,
+        rotation: rot,
+        scale: scale,
+        overwrite: 'auto'
+      });
+    } else {
+      activeCard.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) rotate(${rot}deg) scale(${scale})`;
+    }
+  }
+
+  function onPointerUp() {
+    if (!isDragging || !activeCard) return;
+    isDragging = false;
+    activeCard.classList.remove('dragging');
+
+    const threshold = 60; // px to trigger swipe
+
+    if (deltaX > threshold) {
+      // Swiped right -> go to previous card
+      if (typeof gsap !== 'undefined') {
+        gsap.to(activeCard, {
+          x: 250,
+          rotation: 18,
+          opacity: 0,
+          duration: 0.25,
+          ease: 'power1.in',
+          onComplete: () => {
+            window.switchHeroCard(currentHeroCard - 1);
+          }
+        });
+      } else {
+        window.switchHeroCard(currentHeroCard - 1);
+      }
+    } else if (deltaX < -threshold) {
+      // Swiped left -> go to next card
+      if (typeof gsap !== 'undefined') {
+        gsap.to(activeCard, {
+          x: -250,
+          rotation: -18,
+          opacity: 0,
+          duration: 0.25,
+          ease: 'power1.in',
+          onComplete: () => {
+            window.switchHeroCard(currentHeroCard + 1);
+          }
+        });
+      } else {
+        window.switchHeroCard(currentHeroCard + 1);
+      }
+    } else {
+      // Snap back if threshold not met
+      if (typeof gsap !== 'undefined') {
+        gsap.to(activeCard, {
+          x: 0,
+          y: 0,
+          rotation: 0,
+          scale: 1,
+          opacity: 1,
+          duration: 0.35,
+          ease: 'back.out(1.5)',
+          onComplete: resetHeroTimer
+        });
+      } else {
+        activeCard.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        resetHeroTimer();
+      }
+    }
+
+    activeCard = null;
+  }
+
+  stage.addEventListener('pointerdown', onPointerDown, { passive: true });
+  window.addEventListener('pointermove', onPointerMove, { passive: true });
+  window.addEventListener('pointerup', onPointerUp);
+  window.addEventListener('pointercancel', onPointerUp);
 
   resetHeroTimer();
 }
@@ -461,6 +579,8 @@ function initCalculator() {
   updateCalc();
 }
 
+let animatedTotal = 150000;
+
 function updateCalc() {
   const totalEl = document.getElementById('calcTotalVal');
   const firstEl = document.getElementById('calcHalfFirst');
@@ -469,15 +589,36 @@ function updateCalc() {
 
   if (!totalEl || !firstEl || !secondEl) return;
 
-  const total = calcData.base + calcData.addons;
-  const half = Math.round(total / 2);
+  const targetTotal = calcData.base + calcData.addons;
+  const half = Math.round(targetTotal / 2);
 
-  let formatted = `$${formatNum(total)} ARS`;
-  if (calcData.monthly > 0) {
-    formatted += ` <span style="font-size: 0.95rem; color: var(--accent-emerald);">+ $${formatNum(calcData.monthly)}/mes</span>`;
+  // Smooth number ticker with GSAP
+  if (typeof gsap !== 'undefined') {
+    const counter = { val: animatedTotal };
+    gsap.to(counter, {
+      val: targetTotal,
+      duration: 0.35,
+      ease: 'power1.out',
+      onUpdate: () => {
+        const cur = Math.round(counter.val);
+        let formatted = `$${formatNum(cur)} ARS`;
+        if (calcData.monthly > 0) {
+          formatted += ` <span style="font-size: 0.95rem; color: var(--accent-emerald);">+ $${formatNum(calcData.monthly)}/mes</span>`;
+        }
+        totalEl.innerHTML = formatted;
+      },
+      onComplete: () => {
+        animatedTotal = targetTotal;
+      }
+    });
+  } else {
+    let formatted = `$${formatNum(targetTotal)} ARS`;
+    if (calcData.monthly > 0) {
+      formatted += ` <span style="font-size: 0.95rem; color: var(--accent-emerald);">+ $${formatNum(calcData.monthly)}/mes</span>`;
+    }
+    totalEl.innerHTML = formatted;
   }
 
-  totalEl.innerHTML = formatted;
   firstEl.textContent = `$${formatNum(half)} ARS`;
   secondEl.textContent = `$${formatNum(half)} ARS`;
 
